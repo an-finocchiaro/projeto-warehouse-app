@@ -52,4 +52,5 @@ describe 'Usuário cadastra um galpão' do
     expect(page).to have_content 'Descrição não pode ficar em branco'
     expect(page).to have_content 'Código não pode ficar em branco'
   end
+
 end
