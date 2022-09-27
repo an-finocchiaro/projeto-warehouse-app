@@ -85,5 +85,13 @@ RSpec.describe Warehouse, type: :model do
       #Assert
       expect(result).to eq false
     end
+    it 'false when code format is incorrect' do
+      #Arrange
+      warehouse = Warehouse.create(name: 'Rio', code: 'RIOJ', address: 'Endereço', cep: '25000-000', city: 'Rio', area: 1000, description: 'Alguma descrição')
+      #Act
+      result = warehouse.valid?
+      #Assert
+      expect(result).to eq false
+    end
   end
 end

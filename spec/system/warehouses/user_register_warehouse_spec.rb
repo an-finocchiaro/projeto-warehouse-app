@@ -30,7 +30,7 @@ describe 'Usuário cadastra um galpão' do
     fill_in 'Área', with: '32000'
     click_on 'Enviar'
     #Assert
-    expect(current_path).to eq root_path
+    expect(current_path).to eql(root_path)
     expect(page).to have_content 'Galpão cadastrado com sucesso'
     expect(page).to have_content 'Rio de Janeiro'
     expect(page).to have_content 'RIO'
