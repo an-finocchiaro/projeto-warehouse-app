@@ -11,6 +11,18 @@
   <strong>Telefone: </strong> <%= @supplier.phone_number %><br/>
 </div>
 <div>
+  <h3>Modelos de Produtos</h3><br/><br/>
+
+  <% @supplier.product_models.each do |pm| %>
+    <p>Produto: <%= pm.name %></p><br/>
+    <p>SKU: <%= pm.sku %></p><br/>
+    <p>Peso: <%= pm.weight %> g</p><br/>
+    <p>Dimensões: <%= pm.height %> cm x <%= pm.width %> cm x <%= pm.depth %> cm</p>
+  <% end %>
+</div>
+<div>
   <%= link_to 'Editar', edit_supplier_path(@supplier.id) %>
   <%= link_to 'Voltar', suppliers_path%>
 </div>
+
+
