@@ -3,8 +3,10 @@ require 'rails_helper'
 describe 'Usuário edita um fornecedor' do
   it 'a partir da página índice de fornecedores' do
     #Arrange
+    user = User.create!(name: 'Andréa', email: 'andrea@email.com', password: 'password')
     supplier = Supplier.create!(corporate_name: 'OLLY LTDA', brand_name: 'OLLY', registration_number: '1133044000013', full_address: 'Rua das Cotovias, 111', city: 'Vinhedo', state: 'SP', email: 'contato@olly.com.br', phone_number: '(12) 4337-2230')
     #Act
+    login_as(user)
     visit root_path
     click_on 'Fornecedores'
     click_on "OLLY"
@@ -23,8 +25,10 @@ describe 'Usuário edita um fornecedor' do
 
   it 'com sucesso' do
     #Arrange
+    user = User.create!(name: 'Andréa', email: 'andrea@email.com', password: 'password')
     supplier = Supplier.create!(corporate_name: 'OLLY LTDA', brand_name: 'OLLY', registration_number: '1133044000013', full_address: 'Rua das Cotovias, 111', city: 'Vinhedo', state: 'SP', email: 'contato@olly.com.br', phone_number: '(12) 4337-2230')
     #Act
+    login_as(user)
     visit root_path
     click_on 'Fornecedores'
     click_on "OLLY"
@@ -42,8 +46,10 @@ describe 'Usuário edita um fornecedor' do
 
   it 'com dados incorretos' do
     #Arrange
+    user = User.create!(name: 'Andréa', email: 'andrea@email.com', password: 'password')
     supplier = Supplier.create!(corporate_name: 'OLLY LTDA', brand_name: 'OLLY', registration_number: '1133044000013', full_address: 'Rua das Cotovias, 111', city: 'Vinhedo', state: 'SP', email: 'contato@olly.com.br', phone_number: '(12) 4337-2230')
     #Act
+    login_as(user)
     visit root_path
     click_on 'Fornecedores'
     click_on "OLLY"
