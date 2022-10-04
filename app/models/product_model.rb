@@ -4,5 +4,9 @@ class ProductModel < ApplicationRecord
   validates :sku, uniqueness: true
   validates :sku, length: { is:20 }
   validates :weight, :width, :height, :depth, numericality: {greater_than: 0}
+
+  def dimension
+    "#{height}cm x #{width}cm x #{depth}cm"
+  end
 end
 

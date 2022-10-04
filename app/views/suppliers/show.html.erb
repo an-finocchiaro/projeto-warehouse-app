@@ -1,28 +1,53 @@
-<h2>Fornecedor <%= @supplier.brand_name %></h2>
+<h2><%= Supplier.model_name.human %> <%= @supplier.brand_name %></h2>
 
+  <dl>
+    <div>
+      <dt><%= Supplier.human_attribute_name(:corporate_name) %>:</dt>
+      <dd><%= @supplier.corporate_name %></dd>
+    </div>
+    <div>
+      <dt><%= Supplier.human_attribute_name(:brand_name) %>:</dt>
+      <dd><%= @supplier.brand_name %></dd>
+    </div>
+    <div>
+      <dt><%= Supplier.human_attribute_name(:registration_number) %>:</dt>
+      <dd><%= @supplier.registration_number %></dd>
+    </div>
+    <div>
+      <dt><%= Supplier.human_attribute_name(:full_address) %>:</dt>
+      <dd><%= @supplier.full_address %></dd>
+    </div>
+     <div>
+      <dt><%= Supplier.human_attribute_name(:city) %>:</dt>
+      <dd><%= @supplier.city %></dd>
+    </div>
+     <div>
+      <dt><%= Supplier.human_attribute_name(:state) %>:</dt>
+      <dd><%= @supplier.state %></dd>
+    </div>
+     <div>
+      <dt><%= Supplier.human_attribute_name(:email) %>:</dt>
+      <dd><%= @supplier.email %></dd>
+    </div>
+     <div>
+      <dt><%= Supplier.human_attribute_name(:phone_number) %>:</dt>
+      <dd><%= @supplier.phone_number %></dd>
+    </div>
+  </dl>
+  
 <div>
-  <strong>Razão Social: </strong> <%= @supplier.corporate_name %><br/>
-  <strong>Nome Fantasia: </strong> <%= @supplier.brand_name %><br/>
-  <strong>CNPJ: </strong> <%= @supplier.registration_number %><br/>
-  <strong>Endereço: </strong> <%= @supplier.full_address %><br/>
-  <strong>Cidade: </strong> <%= @supplier.city %>
-  <strong>Estado: </strong> <%= @supplier.state %>
-  <strong>E-mail: </strong> <%= @supplier.email %><br/>
-  <strong>Telefone: </strong> <%= @supplier.phone_number %><br/>
-</div>
-<div>
-  <h3>Modelos de Produtos</h3><br/><br/>
+  <h3>Modelos de Produtos</h3>
 
   <% @supplier.product_models.each do |pm| %>
-    <p>Produto: <%= pm.name %></p><br/>
-    <p>SKU: <%= pm.sku %></p><br/>
-    <p>Peso: <%= pm.weight %> g</p><br/>
+    <p>Produto: <%= pm.name %></p>
+    <p>SKU: <%= pm.sku %></p>
+    <p>Peso: <%= pm.weight %> g</p>
     <p>Dimensões: <%= pm.height %> cm x <%= pm.width %> cm x <%= pm.depth %> cm</p>
   <% end %>
 </div>
 <div>
   <%= link_to 'Editar', edit_supplier_path(@supplier.id) %>
-  <%= link_to 'Voltar', suppliers_path%>
+  <%= link_to 'Voltar', suppliers_path %>
 </div>
 
 

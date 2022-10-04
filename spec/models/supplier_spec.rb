@@ -39,6 +39,17 @@ RSpec.describe Supplier, type: :model do
       expect(result).to eq false
     end
   end
+
+  describe '#full_description' do
+    it 'exibe a razão social e o nome fantasia' do
+      #Arrange
+      s = Supplier.new(brand_name: 'BULL', corporate_name: 'BULL LTDA')
+      #Act
+      result = s.full_description()
+      #Assert
+      expect(result).to eq('BULL - BULL LTDA')
+    end
+  end
 end
 
 

@@ -5,13 +5,13 @@
   </div>
   <% @warehouses.each do |w| %>
     <div>
-      <h3><%= link_to(w.name, warehouse_path(w.id)) %></h3><br/>
+      <h3><%= link_to(w.name, warehouse_path(w.id)) %></h3>
       <dl>
-        <dt>Código: </dt>
+        <dt><%= Warehouse.human_attribute_name(:code) %>: </dt>
         <dd><%= w.code %></dd><br/>
-        <dt>Cidade: </dt>
+        <dt><%= Warehouse.human_attribute_name(:city) %>: </dt>
         <dd><%= w.city %></dd><br/>
-        <dt>Área: </dt>
+        <dt><%= Warehouse.human_attribute_name(:area) %>: </dt>
         <dd><%= w.area %> m2</dd>
       </dl>
     </div>

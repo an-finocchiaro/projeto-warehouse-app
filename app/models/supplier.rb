@@ -4,4 +4,8 @@ class Supplier < ApplicationRecord
   validates :registration_number, uniqueness: true
   validates :registration_number, length: { is:13 }
   validates :email, format: {with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/}
+
+  def full_description
+    "#{brand_name} - #{corporate_name}"
+  end
 end

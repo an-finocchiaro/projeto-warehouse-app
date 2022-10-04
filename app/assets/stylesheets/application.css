@@ -13,3 +13,20 @@
  *= require_tree .
  *= require_self
  */
+
+ body {
+  font-family: 'Ubuntu';
+  
+ }
+
+ header {
+  background:#b6ce91;
+  padding: 10px;
+  text-align:center;
+ }
+
+ div {
+  padding: 3px
+ }
+
+ 

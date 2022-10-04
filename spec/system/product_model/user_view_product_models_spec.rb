@@ -44,6 +44,8 @@ describe 'Usuário vê modelos de produtos' do
     expect(page).to have_content 'Soundbar 7.1 Surround'
     expect(page).to have_content 'SOU71-SAMSU-NOIZ7743'
     expect(page).to have_content 'Samsung'
+    expect(page).to have_content 'Fornecedor'
+    expect(page).to have_content 'SKU'
     
   end
 
