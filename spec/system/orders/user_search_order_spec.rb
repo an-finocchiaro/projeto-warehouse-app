@@ -55,13 +55,13 @@ describe 'Usuário busca por um pedido' do
     supplier = Supplier.create!(corporate_name: 'ACME LTDA', brand_name: 'ACME',
     registration_number: '4344721600010', email: 'contato@acme.com', full_address: 'Av. das Palmas, 100', city: 'Bauru', state: 'SP', phone_number: '(15) 4330-1000')
 
-    allow(SecureRandom).to receive(:alphanumeric).with(8).and_return('GRU12345')
+    allow(SecureRandom).to receive(:alphanumeric).with(10).and_return('GRU12345')
     first_order = Order.create!(user: user, warehouse: first_warehouse, supplier: supplier, estimated_delivery_date: 2.days.from_now)
 
-    allow(SecureRandom).to receive(:alphanumeric).with(8).and_return('GRU98765')
+    allow(SecureRandom).to receive(:alphanumeric).with(10).and_return('GRU98765')
     second_order = Order.create!(user: user, warehouse: first_warehouse, supplier: supplier, estimated_delivery_date: 2.days.from_now)
 
-    allow(SecureRandom).to receive(:alphanumeric).with(8).and_return('SDU00000')
+    allow(SecureRandom).to receive(:alphanumeric).with(10).and_return('SDU00000')
     third_order = order = Order.create!(user: user, warehouse: second_warehouse, supplier: supplier, estimated_delivery_date: 2.days.from_now)
 
     #Act
