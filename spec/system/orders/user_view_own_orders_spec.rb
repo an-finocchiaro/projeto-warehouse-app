@@ -22,19 +22,22 @@ describe 'Usuário vê seus próprios pedidos' do
      supplier = Supplier.create!(corporate_name: 'ACME LTDA', brand_name: 'ACME',
      registration_number: '4344721600010', email: 'contato@acme.com', full_address: 'Av. das Palmas, 100', city: 'Bauru', state: 'SP', phone_number: '(15) 4330-1000')
  
-     first_order = Order.create!(user: ana, warehouse: warehouse, supplier: supplier, estimated_delivery_date: 2.days.from_now)
+     first_order = Order.create!(user: ana, warehouse: warehouse, supplier: supplier, estimated_delivery_date: 2.days.from_now, status: 'pending')
  
-     second_order = Order.create!(user: sergio, warehouse: warehouse, supplier: supplier, estimated_delivery_date: 2.days.from_now)
+     second_order = Order.create!(user: sergio, warehouse: warehouse, supplier: supplier, estimated_delivery_date: 2.days.from_now, status: 'delivered')
  
-     third_order = order = Order.create!(user: ana, warehouse: warehouse, supplier: supplier, estimated_delivery_date: 1.week.from_now)
+     third_order = order = Order.create!(user: ana, warehouse: warehouse, supplier: supplier, estimated_delivery_date: 1.week.from_now, status: 'canceled')
      #Act
      login_as(ana)
      visit root_path
      click_on 'Meus Pedidos'
      #Assert
      expect(page).to have_content first_order.code
+     expect(page).to have_content 'Pendente'
      expect(page).not_to have_content second_order.code
+     expect(page).not_to have_content 'Entregue'
      expect(page).to have_content third_order.code
+     expect(page).to have_content 'Cancelado'
   end
 
   it 'e visita um pedido' do
