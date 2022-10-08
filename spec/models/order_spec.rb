@@ -11,7 +11,7 @@ RSpec.describe Order, type: :model do
     
       supplier = Supplier.create!(corporate_name: 'OLLY LTDA', brand_name: 'OLLY',
                     registration_number: '1133044000013', full_address: 'Rua das Cotovias, 111', city: 'Vinhedo', state: 'SP', email: 'contato@olly.com.br', phone_number: '(12) 4337-2230')
-      order = Order.new(user: user, warehouse: warehouse, supplier: supplier, estimated_delivery_date: '2022-11-01')
+      order = Order.new(user: user, warehouse: warehouse, supplier: supplier, estimated_delivery_date: 1.week.from_now)
       #Act
       result = order.valid?
       #Assert
@@ -67,7 +67,7 @@ RSpec.describe Order, type: :model do
     
       supplier = Supplier.create!(corporate_name: 'OLLY LTDA', brand_name: 'OLLY',
                     registration_number: '1133044000013', full_address: 'Rua das Cotovias, 111', city: 'Vinhedo', state: 'SP', email: 'contato@olly.com.br', phone_number: '(12) 4337-2230')
-      order = Order.new(user: user, warehouse: warehouse, supplier: supplier, estimated_delivery_date: '2022-11-01')
+      order = Order.new(user: user, warehouse: warehouse, supplier: supplier, estimated_delivery_date: 1.week.from_now)
       #Act
       order.save!
       result = order.code
@@ -83,12 +83,25 @@ RSpec.describe Order, type: :model do
     
       supplier = Supplier.create!(corporate_name: 'OLLY LTDA', brand_name: 'OLLY',
                     registration_number: '1133044000013', full_address: 'Rua das Cotovias, 111', city: 'Vinhedo', state: 'SP', email: 'contato@olly.com.br', phone_number: '(12) 4337-2230')
-      first_order = Order.create!(user: user, warehouse: warehouse, supplier: supplier, estimated_delivery_date: '2022-11-01')
-      second_order = Order.new(user: user, warehouse: warehouse, supplier: supplier, estimated_delivery_date: '2022-11-15')
+      first_order = Order.create!(user: user, warehouse: warehouse, supplier: supplier, estimated_delivery_date: 2.weeks.from_now)
+      second_order = Order.new(user: user, warehouse: warehouse, supplier: supplier, estimated_delivery_date: 1.week.from_now)
       #Act
       second_order.save!
       #Assert
       expect(second_order.code).not_to eq first_order.code
+    end
+
+    it 'e não deve ser modificado' do
+      #Arrange
+      user = User.create!(name: 'Sergio', email: 'sergio@email.com', password: '12345678')
+      warehouse = Warehouse.create!(name: 'Aeroporto SP', code: 'GRU', city: 'Guarulhos', area: 100_000, address: 'Avenida do Aeroporto, 1000', cep: '15000-000', description: 'Galpão destinado para cargas internacionais')
+      supplier = Supplier.create!(corporate_name: 'OLLY LTDA', brand_name: 'OLLY', registration_number: '1133044000013', full_address: 'Rua das Cotovias, 111', city: 'Vinhedo', state: 'SP', email: 'contato@olly.com.br', phone_number: '(12) 4337-2230')
+      order = Order.create!(user: user, warehouse: warehouse, supplier: supplier, estimated_delivery_date: 1.week.from_now)
+      original_code = order.code
+      #Act
+      order.update!(estimated_delivery_date: 1.month.from_now)
+      #Assert
+      expect(order.code).to eq(original_code)
     end
   end
 end
