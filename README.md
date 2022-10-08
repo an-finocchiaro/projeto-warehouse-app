@@ -3,22 +3,23 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
-Things you may want to cover:
+ruby 3.0.0p0 (2020-12-25 revision 95aff21468) [x86_64-linux]
 
-* Ruby version
+Rails 7.0.4
 
-* System dependencies
+gem 'devise'
 
-* Configuration
+gem 'rspec-rails'
 
-* Database creation
+gem 'capybara'
 
-* Database initialization
+The data can be loaded with the bin/rails db:seed command
 
-* How to run the test suite
+user email = ana@email.com
 
-* Services (job queues, cache servers, search engines, etc.)
+password = password
 
-* Deployment instructions
-
-* ...
+bugs para ver depois:
+- input date_field no form 'Registrar Pedido' está mm/dd/yyyy 
+- consegue adicionar item e editar pedidos entregues e cancelados
+- falta link 'voltar' nas views de edição
